@@ -12,7 +12,6 @@ import ChameleonFramework
 class ChatViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
     
     
-    
     // Declare instance variables here
     var messageArray : [Message] = []
     
@@ -21,7 +20,6 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet var sendButton: UIButton!
     @IBOutlet var messageTextfield: UITextField!
     @IBOutlet var messageTableView: UITableView!
-    
     
     
     override func viewDidLoad() {
@@ -54,12 +52,11 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     //MARK: - TableView DataSource Methods
     
     
-    
     //TODO: Declare cellForRowAtIndexPath here:
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "customMessageCell", for: indexPath) as! CustomMessageCell
-        //let messageArray = ["首页", "来了", "老弟", "进屋", "坐啊"]
+
         cell.messageBody.text = messageArray[indexPath.row].messageBody
         cell.senderUsername.text = messageArray[indexPath.row].sender
         cell.avatarImageView.image = UIImage.init(named: "egg")
@@ -75,7 +72,6 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
         return cell
     }
-    
     
     
     //TODO: Declare numberOfRowsInSection here:
@@ -96,16 +92,13 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     func configureTableView() {
         
         messageTableView.rowHeight = UITableView.automaticDimension
-        messageTableView.estimatedRowHeight = 120.0
+        messageTableView.estimatedRowHeight = 125.0
     }
-    
     
     
     ///////////////////////////////////////////
     
     //MARK:- TextField Delegate Methods
-    
-    
 
     
     //TODO: Declare textFieldDidBeginEditing here:
@@ -116,7 +109,6 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             self.view.layoutIfNeeded()
         }
     }
-    
     
     
     //TODO: Declare textFieldDidEndEditing here:
@@ -133,7 +125,6 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     
     //MARK: - Send & Recieve from Firebase
-    
 
     
     @IBAction func sendPressed(_ sender: AnyObject) {
@@ -154,6 +145,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             if error != nil {
                 print(error!)
             }
+                
             else {
                 print("Message saved successfully!")
             }
@@ -188,7 +180,6 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             
         }
     }
-    
     
     
     @IBAction func logOutPressed(_ sender: AnyObject) {
